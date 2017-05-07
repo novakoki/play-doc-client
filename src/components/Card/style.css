@@ -1,0 +1,14 @@
+.card {
+  position: relative;
+}
+
+.card-title {
+  
+}
+
+.card-more {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
