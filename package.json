@@ -1,5 +1,5 @@
 {
-  "name": "play-doc-editor",
+  "name": "play-doc-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
