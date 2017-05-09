@@ -1,8 +1,7 @@
 ul.api-list {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  padding: 0;
+  justify-content: center;
 }
 
 li.api-list-item {

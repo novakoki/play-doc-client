@@ -6,8 +6,8 @@ function Card ({ title = 'title', more = '#', children }) {
     <div className="card">
       <div className="card-head">
         <h3 className="card-title">{ title }</h3>
+        <a className="card-more" href={ more }>More</a>
       </div>
-      <a className="card-more" href={ more }>More</a>
       <div className="card-content">{ children }</div>
     </div>
   )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import Card from './components/Card'
 import ApiList from './components/ApiList'
 import 'normalize.css'
 import './App.css'
@@ -19,6 +18,13 @@ class App extends Component {
         method: "GET",
         resource: "/apis",
         summary: "Get all APIs",
+        status: 1
+      },
+      {
+        id: 3,
+        method: "POST",
+        resource: "/apis",
+        summary: "Add an API",
         status: 1
       }
     ]

@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body, button, code, div, footer, form, h1, h2, h3, h4, h5, h6, header, input, li, nav, p, pre, textarea, th, u {
+body, button, code, div, footer, form, h1, h2, h3, h4, h5, h6, header, input, li, nav, p, pre, textarea, th, ul {
   margin: 0;
   padding: 0;
 }
