@@ -1,30 +1,5 @@
-* {
-  box-sizing: border-box;
-}
+@import '~antd/dist/antd.css';
 
-body, button, code, div, footer, form, h1, h2, h3, h4, h5, h6, header, input, li, nav, p, pre, textarea, th, ul {
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  font-size: 12px;
-  line-height: 1.5;
-  color: #333;
-}
-
-a {
-  text-decoration: none;
-  color: #108ee9;
-  background: transparent;
-  outline: none;
-  cursor: pointer;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-li {
-  list-style: none;
+.layout {
+  height: 100%;
 }

@@ -7,7 +7,9 @@ class Input extends Component {
 
   render() {
     return (
-      <input value={this.state.value} onChange={this.setValue}/>
+      <input value={this.state.value}
+        onChange={this.setValue}
+        placeholder={this.props.placeholder} />
     )
   }
 }
