@@ -1,9 +1,0 @@
-ul.api-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-li.api-list-item {
-  padding: 16px;
-}
