@@ -1,19 +1,13 @@
 <template>
-  <el-row class="header">
-    <el-col :span="6">
+  <el-row class="header" type="flex">
+    <el-col class="logo">
       <img src="../assets/logo.png">
     </el-col>
-    <el-col :span="18">
-      <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="/repositories">
-          <router-link to="/repositories">Repositories</router-link>
-        </el-menu-item>
-        <el-menu-item index="/apis">
-          <router-link to="/apis">APIs</router-link>
-        </el-menu-item>
-        <el-menu-item index="/settings">
-          <router-link to="/settings">Settings</router-link>
-        </el-menu-item>
+    <el-col>
+      <el-menu theme="dark" class="el-menu-demo" mode="horizontal" :router="true">
+        <el-menu-item index="/repositories">Repositories</el-menu-item>
+        <el-menu-item index="/apis">APIs</el-menu-item>
+        <el-menu-item index="/settings">Settings</el-menu-item>
       </el-menu>
     </el-col>
   </el-row>
@@ -23,13 +17,10 @@
 export default {
   data() {
     return {
-      activeIndex: `/${this.$route.path.split('/')[1]}`
+      
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
-      this.$router.push(key)
-    }
   }
 }
 </script>
@@ -37,6 +28,10 @@ export default {
 <style scoped>
   .header {
     background: #324157;
+  }
+
+  .logo {
+    width: 300px;
   }
 
   img {

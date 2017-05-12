@@ -1,11 +1,16 @@
 <template>
-  <el-row class="api">
-    <api-nav class="api-nav" />
+  <el-row class="api" type="flex">
+    <el-col class="nav">
+      <api-nav />
+    </el-col>
+    <el-col>
+      <router-view />
+    </el-col>
   </el-row>
 </template>
 
 <script>
-import ApiNav from './ApiNav'
+import ApiNav from './Nav'
 export default {
   name: 'Api',
   components: {
@@ -16,7 +21,13 @@ export default {
 
 <style scoped>
   .api {
+    height: calc(100% - 70px);
+  }
+
+  .nav {
     height: 100%;
-    overflow: hidden;
+    width: 300px;
+    padding-top: 16px;
+    background: #eef1f6;
   }
 </style>
