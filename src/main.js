@@ -16,3 +16,6 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+store.dispatch('loadApiOverview')
+store.dispatch('loadRepos')

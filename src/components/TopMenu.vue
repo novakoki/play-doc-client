@@ -5,9 +5,18 @@
     </el-col>
     <el-col>
       <el-menu theme="dark" class="el-menu-demo" mode="horizontal" :router="true">
-        <el-menu-item index="/repositories">Repositories</el-menu-item>
-        <el-menu-item index="/apis">APIs</el-menu-item>
-        <el-menu-item index="/settings">Settings</el-menu-item>
+        <el-menu-item index="/repositories">
+          <i class="el-icon-document"></i>
+          <span>Repositories</span>
+        </el-menu-item>
+        <el-menu-item index="/apis">
+          <i class="el-icon-share"></i>
+          <span>APIs</span>
+        </el-menu-item>
+        <el-menu-item index="/settings">
+          <i class="el-icon-setting"></i>
+          <span>Settings</span>
+        </el-menu-item>
       </el-menu>
     </el-col>
   </el-row>
@@ -37,6 +46,10 @@ export default {
   img {
     width: 120px;
     margin: 0 64px;
+  }
+
+  i {
+    margin-right: 5px;
   }
 </style>
 

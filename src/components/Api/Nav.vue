@@ -4,7 +4,7 @@
       <el-input placeholder="Search API..." icon="search" />
     </div>
     <el-menu default-active="2" class="el-menu-vertical" :router="true">
-      <el-submenu v-for="repoId in repos.allIds" :key="repoId" :index="repoId">
+      <el-submenu v-for="repoId in repos.allIds" :key="repoId" :index="repoId.toString()">
         <template slot="title">{{repos.byId[repoId].name}}</template>
         <el-menu-item v-for="apiId in apis.allIds.filter(id => apis.byId[id].repoId === repoId)"
           :key="apiId" :index="`/apis/${apiId}`">

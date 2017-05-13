@@ -2,43 +2,37 @@ import { Store } from 'vuex'
 
 const store = new Store({
   state: {
-    repositories: {
-      byId: {
-        "1": {
-          id: "1",
-          name: "play-doc-server"
-        }
-      },
-      allIds: ["1"]
+    repositories: {},
+    apis: {}
+  },
+  mutations: {
+    setApis(state, rawApis) {
+      state.apis = {
+        allIds: rawApis.map(api => api.id),
+        byId: {}
+      }
+      rawApis.forEach(api => state.apis.byId[api.id] = api)
     },
-    apis: {
-      byId: {
-        "1": {
-          id: "1",
-          method: "GET",
-          resource: "/apis/id",
-          summary: "Get some API by id",
-          status: 1,
-          repoId: "1"
-        },
-        "2": {
-          id: "2",
-          method: "GET",
-          resource: "/apis",
-          summary: "Get all APIs",
-          status: 1,
-          repoId: "1"
-        },
-        "3": {
-          id: "3",
-          method: "POST",
-          resource: "/apis",
-          summary: "Add an API",
-          status: 1,
-          repoId: "1"
-        }
-      },
-      allIds: ["1", "2", "3"]
+    setRepos(state, rawRepos) {
+      state.repositories = {
+        allIds: rawRepos.map(repo => repo.id),
+        byId: {}
+      }
+      rawRepos.forEach(repo => state.repositories.byId[repo.id] = repo)
+    }
+  },
+  actions: {
+    loadApiOverview(context) {
+      window.fetch('/api/apis')
+        .then(res => res.json())
+        .catch(e => console.log(e))
+        .then(rawApis => context.commit('setApis', rawApis))
+    },
+    loadRepos(context) {
+      window.fetch('/api/repos')
+        .then(res => res.json())
+        .catch(e => console.log(e))
+        .then(rawRepos => context.commit('setRepos', rawRepos))
     }
   }
 })

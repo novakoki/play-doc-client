@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Api from '@/components/Api'
 import ApiDetail from '@/components/Api/Detail'
+import Repo from '@/components/Repo'
 import Vuex from 'vuex'
 import ElementUI from 'element-ui'
 Vue.use(Vuex)
@@ -19,6 +20,10 @@ export default new Router({
           component: ApiDetail
         }
       ]
+    },
+    {
+      path: '/repositories',
+      component: Repo
     }
   ]
 })
