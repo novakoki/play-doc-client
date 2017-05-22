@@ -12,19 +12,19 @@
       </el-col>
     </el-row>
     <ul>
-      <li>
+      <li v-for="id in repos.allIds">
         <el-row type="flex" align="middle">
           <el-col :span="8">
-            <h4>RepoName</h4>
-            <p>Description</p>
+            <h4>{{repos.byId[id].name}}</h4>
+            <p>{{repos.byId[id].description}}</p>
           </el-col>
           <el-col :span="8">
             8 months ago
           </el-col>
           <el-col :span="8">
             <el-button-group>
-              <el-button icon="arrow-down">API Overview</el-button>
               <el-button icon="setting">Setting</el-button>
+              <el-button icon="more">API Overview</el-button>
             </el-button-group>
           </el-col>
         </el-row>
@@ -34,8 +34,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-
+  computed: mapState({
+    repos: state => state.repositories
+  })
 }
 </script>
 
@@ -43,6 +46,7 @@ export default {
   .add-repo {
     padding-bottom: 20px;
   }
+
   .container {
     height: calc(100% - 70px);
     padding: 36px;
@@ -51,7 +55,7 @@ export default {
 
   ul {
     min-width: 800px;
-    padding: 40px;
+    padding: 30px;
     background: #fff;
     min-height: 600px;
     border-radius: 10px;
@@ -59,7 +63,7 @@ export default {
 
   li {
     width: 100%;
-    padding: 40px;
+    padding: 30px;
     border-bottom: 2px solid #eee;
   }
 

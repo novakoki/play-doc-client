@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Api from '@/components/Api'
-import ApiDetail from '@/components/Api/Detail'
+import ApiContent from '@/components/Api/Content'
 import Repo from '@/components/Repo'
 import Vuex from 'vuex'
 import ElementUI from 'element-ui'
@@ -17,7 +17,7 @@ export default new Router({
       children: [
         {
           path: '',
-          component: ApiDetail
+          component: ApiContent
         }
       ]
     },
