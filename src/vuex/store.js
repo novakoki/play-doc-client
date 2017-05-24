@@ -2,23 +2,27 @@ import { Store } from 'vuex'
 
 const store = new Store({
   state: {
-    repositories: {},
-    apis: {}
+    repositories: {
+      allIds: [],
+      byId: {}
+    },
+    apis: {
+      allIds: [],
+      byId: {}
+    }
   },
   mutations: {
     setApis(state, rawApis) {
-      state.apis = {
-        allIds: rawApis.map(api => api.id),
-        byId: {}
+      if (rawApis) {
+        state.apis.allIds = rawApis.map(api => api.id)
+        rawApis.forEach(api => state.apis.byId[api.id] = api)
       }
-      rawApis.forEach(api => state.apis.byId[api.id] = api)
     },
     setRepos(state, rawRepos) {
-      state.repositories = {
-        allIds: rawRepos.map(repo => repo.id),
-        byId: {}
+      if (rawRepos) {
+        state.repositories.allIds = rawRepos.map(repo => repo.id)
+        rawRepos.forEach(repo => state.repositories.byId[repo.id] = repo)
       }
-      rawRepos.forEach(repo => state.repositories.byId[repo.id] = repo)
     }
   },
   actions: {

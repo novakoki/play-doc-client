@@ -2,7 +2,7 @@
   <div class="container">
     <el-tabs type="border-card" class="tabs">
       <el-tab-pane label="Documentation">
-        <detail :api="api"/>
+        <detail />
       </el-tab-pane>
       <el-tab-pane label="Test Cases">
         <test-case :tests="tests"/>
@@ -27,28 +27,25 @@ export default {
     }
   },
   methods: {
-    load(to, field, url) {
-      if (to.params.apiId) {
-        window.fetch(url)
-          .then(res => {
-            return res.json()
-          })
-          .catch(e => console.error(e))
-          .then(json => {
-            field = json
-          })
+    load(url) {
+      return window.fetch(url)
+        .then(res => {
+          return res.json()
+        })
+        .catch(e => console.error(e))
+    },
+    loadApiAndTests(apiId, vm) {
+      if (apiId) {
+        // vm.load(`/api/apis/${apiId}`).then(res => vm.api = res)
+        // vm.load(`/api/apis/${apiId}/tests`).then(res => vm.tests = res)
       }
     }
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.load(to, vm.api, `/api/apis/${to.params.apiId}`)
-      vm.load(to, vm.tests, `/api/apis/${to.params.apiId}/tests`)
-    })
+    next(vm => vm.loadApiAndTests(to.params.apiId, vm))
   },
   beforeRouteUpdate(to, from, next) {
-    this.load(to, this.api, `/api/apis/${to.params.apiId}`)
-    this.load(to, this.tests, `/api/apis/${to.params.apiId}/tests`)
+    this.loadApiAndTests(to.params.apiId, this)
     next()
   }
 }
