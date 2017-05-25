@@ -5,7 +5,7 @@
         <detail />
       </el-tab-pane>
       <el-tab-pane label="Test Cases">
-        <test-case :tests="tests"/>
+        <test-case />
       </el-tab-pane>
       <el-tab-pane label="Q&A"></el-tab-pane>
     </el-tabs>

@@ -1,23 +1,18 @@
 <template>
-  <div v-if="api !== null">
-    <el-row type="flex" justify="space-between">
-      <div v-if="edit">
-        <el-select v-model="api.method" style="width: 100px;">
-          <el-option v-for="item in httpMethods" :value="item.value" />
-        </el-select>
-        <el-input v-model="api.resource" style="width: 300px;">
-          <template slot="prepend">Resource</template>
-        </el-input>
-      </div>
-      <h3 v-else>
-        <span>{{api.method}}</span>
-        <span>{{api.resource}}</span>
-      </h3>
-      <el-button @click="switchMode">
-        <span v-if="edit">Done</span>
-        <span v-else>Edit</span>
-      </el-button>
-    </el-row>
+  <div v-if="api !== null" class="api-detail">
+    <div v-if="edit">
+      <el-select v-model="api.method" style="width: 100px;">
+        <el-option v-for="item in httpMethods" :value="item.value" />
+      </el-select>
+      <el-input v-model="api.resource" style="width: 300px;">
+        <template slot="prepend">Resource</template>
+      </el-input>
+    </div>
+    <h3 v-else>
+      <span>{{api.method}}</span>
+      <span>{{api.resource}}</span>
+      <el-tag>未实现</el-tag>
+    </h3>
     <section>
       <h4>Summary</h4>
       <el-input v-if="edit" v-model="api.summary" />
@@ -40,7 +35,7 @@
         <el-table-column prop="location" label="Located in" width="120">
           <template scope="scope">
             <el-select v-model="scope.row.location" v-if="edit">
-              <el-option v-for="item in locations" :value="item.value" />
+              <el-option v-for="item in paraLocations" :value="item.value" />
             </el-select>
             <span v-else>{{scope.row.location}}</span>
           </template>
@@ -48,7 +43,7 @@
         <el-table-column prop="type" label="Type" width="180">
           <template scope="scope">
             <el-select v-model="scope.row.type" v-if="edit">
-              <el-option v-for="item in types" :value="item.value" />
+              <el-option v-for="item in paraTypes" :value="item.value" />
             </el-select>
             <span v-else>{{scope.row.type}}</span>
           </template>
@@ -75,68 +70,24 @@
         <el-table-column prop="type" label="Type" />
       </el-table>
     </section>
+    <el-row type="flex" justify="end">
+      <el-button @click="switchMode" class="switch-btn">
+        <span v-if="edit">Done</span>
+        <span v-else>Edit</span>
+      </el-button>
+    </el-row>
   </div>
 </template>
 
 <script>
+import { httpMethods, paraLocations, paraTypes } from '@/data'
 export default {
   data() {
     return {
       edit: false,
-      httpMethods: [
-        {
-          value: 'GET'
-        },
-        {
-          value: 'POST'
-        },
-        {
-          value: 'PUT'
-        },
-        {
-          value: 'DELETE'
-        },
-        {
-          value: 'OPTION'
-        },
-        {
-          value: 'PATCH'
-        }
-      ],
-      locations: [
-        {
-          value: 'url'
-        },
-        {
-          value: 'query'
-        },
-        {
-          value: 'body'
-        }
-      ],
-      types: [
-        {
-          value: 'text'
-        },
-        {
-          value: 'nonEmptyText'
-        },
-        {
-          value: 'number'
-        },
-        {
-          value: 'longNumber'
-        },
-        {
-          value: 'bigDecimal'
-        },
-        {
-          value: 'boolean'
-        },
-        {
-          value: 'date'
-        }
-      ]
+      httpMethods,
+      paraLocations,
+      paraTypes
     }
   },
   methods: {
@@ -210,16 +161,20 @@ export default {
 }
 </script>
 
-<style scoped>
-  h3, section>h4 {
+<style>
+  .api-detail h3, .api-detail section>h4 {
     color: #20a0ff;
   }
 
-  section {
+  .api-detail section {
     padding: 24px 0 0 24px;
   }
 
-  section>h4 {
+  .api-detail section>h4 {
     margin-bottom: 12px;
+  }
+
+  .api-detail .switch-btn {
+    margin: 15px 0;
   }
 </style>
